@@ -1,0 +1,31 @@
+{
+  "tests": [
+    {
+      "name": "Spin without authentication",
+      "method": "POST",
+      "expectedStatus": 401,
+      "expectedBody": {
+        "error": "No valid authorization token provided"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Spin with valid token",
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer valid_jwt_token_here"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "character": {
+          "name": "string",
+          "rarity": {
+            "name": "string"
+          }
+        }
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

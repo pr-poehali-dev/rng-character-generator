@@ -1,0 +1,32 @@
+{
+  "tests": [
+    {
+      "name": "Get admin data without auth",
+      "method": "GET",
+      "expectedStatus": 401,
+      "expectedBody": {
+        "error": "No valid authorization token provided"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Create character with admin token",
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer admin_jwt_token_here"
+      },
+      "body": {
+        "action": "create_character",
+        "name": "Test Character",
+        "description": "A test character",
+        "rarity_id": 1
+      },
+      "expectedStatus": 201,
+      "expectedBody": {
+        "success": true,
+        "message": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

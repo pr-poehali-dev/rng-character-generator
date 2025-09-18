@@ -1,0 +1,41 @@
+{
+  "tests": [
+    {
+      "name": "Register new user",
+      "method": "POST",
+      "body": {
+        "action": "register",
+        "username": "testuser",
+        "password": "password123"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "token": "string",
+        "user": {
+          "username": "string",
+          "is_admin": "boolean"
+        },
+        "message": "string"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Login existing user",
+      "method": "POST", 
+      "body": {
+        "action": "login",
+        "username": "Admin",
+        "password": "Satoru1212"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "token": "string",
+        "user": {
+          "username": "Admin",
+          "is_admin": true
+        }
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
